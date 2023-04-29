@@ -22,7 +22,7 @@
     fetch(o.href, n);
   }
 })();
-function $(r) {
+function T(r) {
   return r = r || [], Array.isArray(r) ? r : [r];
 }
 function m(r) {
@@ -34,7 +34,7 @@ function we(r) {
   const e = Object.prototype.toString.call(r).match(/ (.*)\]$/)[1];
   return e === "Object" || e === "Array" ? `${e} ${JSON.stringify(r)}` : e;
 }
-const I = "module", C = "nomodule", N = [I, C];
+const $ = "module", I = "nomodule", N = [$, I];
 function V(r) {
   if (!r.match(/.+\.[m]?js$/))
     throw new Error(
@@ -47,7 +47,7 @@ function re(r) {
       m('Expected route config to be an object with a "path" string property, or an array of such objects')
     );
   const e = r.bundle, t = ["component", "redirect", "bundle"];
-  if (!y(r.action) && !Array.isArray(r.children) && !y(r.children) && !j(e) && !t.some((i) => _(r[i])))
+  if (!y(r.action) && !Array.isArray(r.children) && !y(r.children) && !C(e) && !t.some((i) => _(r[i])))
     throw new Error(
       m(
         `Expected route config "${r.path}" to include either "${t.join('", "')}" or "action" function but none found.`
@@ -60,7 +60,7 @@ function re(r) {
       N.forEach((i) => i in e && V(e[i]));
     else
       throw new Error(
-        m('Expected route bundle to include either "' + C + '" or "' + I + '" keys, or both')
+        m('Expected route bundle to include either "' + I + '" or "' + $ + '" keys, or both')
       );
   r.redirect && ["bundle", "component"].forEach((i) => {
     i in r && console.warn(
@@ -71,11 +71,11 @@ function re(r) {
   });
 }
 function K(r) {
-  $(r).forEach((e) => re(e));
+  T(r).forEach((e) => re(e));
 }
 function k(r, e) {
   let t = document.head.querySelector('script[src="' + r + '"][async]');
-  return t || (t = document.createElement("script"), t.setAttribute("src", r), e === I ? t.setAttribute("type", I) : e === C && t.setAttribute(C, ""), t.async = !0), new Promise((i, o) => {
+  return t || (t = document.createElement("script"), t.setAttribute("src", r), e === $ ? t.setAttribute("type", $) : e === I && t.setAttribute(I, ""), t.async = !0), new Promise((i, o) => {
     t.onreadystatechange = t.onload = (n) => {
       t.__dynamicImportLoaded = !0, i(n);
     }, t.onerror = (n) => {
@@ -94,7 +94,7 @@ function E(r, e) {
     { cancelable: r === "go", detail: e }
   ));
 }
-function j(r) {
+function C(r) {
   return typeof r == "object" && !!r;
 }
 function y(r) {
@@ -159,7 +159,7 @@ const Pe = {
     window.removeEventListener("popstate", G);
   }
 };
-var b = le, Oe = B, Le = Ce, Te = ae, $e = ce, ie = "/", oe = "./", Ie = new RegExp([
+var b = le, Oe = B, Le = Ie, je = ae, Te = ce, ie = "/", oe = "./", $e = new RegExp([
   // Match escaped characters that would otherwise appear in future matches.
   // This allows the user to escape special characters that won't transform.
   "(\\\\.)",
@@ -171,7 +171,7 @@ var b = le, Oe = B, Le = Ce, Te = ae, $e = ce, ie = "/", oe = "./", Ie = new Reg
   "(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?"
 ].join("|"), "g");
 function B(r, e) {
-  for (var t = [], i = 0, o = 0, n = "", s = e && e.delimiter || ie, l = e && e.delimiters || oe, a = !1, c; (c = Ie.exec(r)) !== null; ) {
+  for (var t = [], i = 0, o = 0, n = "", s = e && e.delimiter || ie, l = e && e.delimiters || oe, a = !1, c; (c = $e.exec(r)) !== null; ) {
     var h = c[0], d = c[1], u = c.index;
     if (n += r.slice(o, u), o = u + h.length, d) {
       n += d[1], a = !0;
@@ -191,12 +191,12 @@ function B(r, e) {
       optional: ye,
       repeat: ve,
       partial: ge,
-      pattern: H ? je(H) : "[^" + g(D) + "]+?"
+      pattern: H ? Ce(H) : "[^" + g(D) + "]+?"
     });
   }
   return (n || o < r.length) && t.push(n + r.substr(o)), t;
 }
-function Ce(r, e) {
+function Ie(r, e) {
   return ae(B(r, e));
 }
 function ae(r) {
@@ -243,7 +243,7 @@ function ae(r) {
 function g(r) {
   return r.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1");
 }
-function je(r) {
+function Ce(r) {
   return r.replace(/([=!:$/()])/g, "\\$1");
 }
 function se(r) {
@@ -302,8 +302,8 @@ function le(r, e, t) {
 }
 b.parse = Oe;
 b.compile = Le;
-b.tokensToFunction = Te;
-b.tokensToRegExp = $e;
+b.tokensToFunction = je;
+b.tokensToRegExp = Te;
 const { hasOwnProperty: Fe } = Object.prototype, F = /* @__PURE__ */ new Map();
 F.set("|false", {
   keys: [],
@@ -441,7 +441,7 @@ class R {
    */
   setRoutes(e) {
     K(e);
-    const t = [...$(e)];
+    const t = [...T(e)];
     this.root.__children = t;
   }
   /**
@@ -454,7 +454,7 @@ class R {
    * @protected
    */
   addRoutes(e) {
-    return K(e), this.root.__children.push(...$(e)), this.getRoutes();
+    return K(e), this.root.__children.push(...T(e)), this.getRoutes();
   }
   /**
    * Removes all existing routes from the routing config.
@@ -674,14 +674,14 @@ function ee(r, e, t) {
   };
 }
 function Qe(r, e) {
-  if (!Array.isArray(r) && !j(r))
+  if (!Array.isArray(r) && !C(r))
     throw new Error(
       m(
         `Incorrect "children" value for the route ${e.path}: expected array or object, but got ${r}`
       )
     );
   e.__children = [];
-  const t = $(r);
+  const t = T(r);
   for (let i = 0; i < t.length; i++)
     re(t[i]), e.__children.push(t[i]);
 }
@@ -1099,7 +1099,7 @@ class v extends R {
         break;
       }
     if (t && i && s) {
-      const l = j(s) && s.leave || "leaving", a = j(s) && s.enter || "entering";
+      const l = C(s) && s.leave || "leaving", a = C(s) && s.enter || "entering";
       o.push(Z(t, l)), o.push(Z(i, a));
     }
     return Promise.all(o).then(() => e);
@@ -1201,7 +1201,7 @@ class v extends R {
     return E("go", { pathname: t, search: i, hash: o });
   }
 }
-const Je = /\/\*[\*!]\s+vaadin-dev-mode:start([\s\S]*)vaadin-dev-mode:end\s+\*\*\//i, T = window.Vaadin && window.Vaadin.Flow && window.Vaadin.Flow.clients;
+const Je = /\/\*[\*!]\s+vaadin-dev-mode:start([\s\S]*)vaadin-dev-mode:end\s+\*\*\//i, j = window.Vaadin && window.Vaadin.Flow && window.Vaadin.Flow.clients;
 function Ye() {
   function r() {
     return !0;
@@ -1210,7 +1210,7 @@ function Ye() {
 }
 function Ze() {
   try {
-    return xe() ? !0 : et() ? T ? !tt() : !Ye() : !1;
+    return xe() ? !0 : et() ? j ? !tt() : !Ye() : !1;
   } catch {
     return !1;
   }
@@ -1222,7 +1222,7 @@ function et() {
   return ["localhost", "127.0.0.1"].indexOf(window.location.hostname) >= 0;
 }
 function tt() {
-  return !!(T && Object.keys(T).map((e) => T[e]).filter((e) => e.productionMode).length > 0);
+  return !!(j && Object.keys(j).map((e) => j[e]).filter((e) => e.productionMode).length > 0);
 }
 function fe(r, e) {
   if (typeof r != "function")
@@ -1262,49 +1262,79 @@ it.setRoutes([
     path: "/",
     component: "ajm-home",
     // @ts-ignore
-    action: () => import("./ajm-home-4d455617.js")
+    action: () => import("./ajm-home-0f542775.js")
   },
   {
     path: "/about",
     component: "ajm-about",
     // @ts-ignore
-    action: () => import("./ajm-about-a46511c9.js")
+    action: () => import("./ajm-about-95026e2b.js")
   },
   {
     path: "/work",
     component: "ajm-work",
     // @ts-ignore
-    action: () => import("./ajm-work-5241818a.js")
+    action: () => import("./ajm-work-0eca9026.js")
   },
   {
     path: "/tinkerings",
     component: "ajm-tinkerings",
     // @ts-ignore
-    action: () => import("./ajm-tinkerings-739fba73.js")
+    action: () => import("./ajm-tinkerings-054437c4.js")
   },
   {
     path: "/technologist",
     component: "ajm-technologist",
     // @ts-ignore
-    action: () => import("./ajm-technologist-3600f8f5.js")
+    action: () => import("./ajm-technologist-4afb39a8.js")
   },
   {
     path: "/classicist",
     component: "ajm-classicist",
     // @ts-ignore
-    action: () => import("./ajm-classicist-ac6e599b.js")
+    action: () => import("./ajm-classicist-095ad73b.js")
   },
   {
     path: "/futurist",
     component: "ajm-futurist",
     // @ts-ignore
-    action: () => import("./ajm-futurist-7f4cb393.js")
+    action: () => import("./ajm-futurist-c2d5693d.js")
   },
   {
     path: "/anachronist",
     component: "ajm-anachronist",
     // @ts-ignore
-    action: () => import("./ajm-anachronist-99755be6.js")
+    action: () => import("./ajm-anachronist-167bdd84.js")
+  },
+  {
+    path: "/lsystems",
+    component: "ajm-lsystems",
+    // @ts-ignore
+    action: () => import("./ajm-lsystems-c6427b77.js")
+  },
+  {
+    path: "/games",
+    component: "ajm-games",
+    // @ts-ignore
+    action: () => import("./ajm-games-fbfb94f7.js")
+  },
+  {
+    path: "/starfield",
+    component: "ajm-starfield",
+    // @ts-ignore
+    action: () => import("./ajm-starfield-51fdb50d.js")
+  },
+  {
+    path: "/graphing",
+    component: "ajm-graphing",
+    // @ts-ignore
+    action: () => import("./ajm-graphing-4080a607.js")
+  },
+  {
+    path: "/cssjsfun",
+    component: "ajm-cssjsfun",
+    // @ts-ignore
+    action: () => import("./ajm-cssjsfun-5118c8d0.js")
   },
   {
     path: "(.*)",
