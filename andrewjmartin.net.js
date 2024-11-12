@@ -1262,13 +1262,13 @@ it.setRoutes([
     path: "/",
     component: "ajm-home",
     // @ts-ignore
-    action: () => import("./ajm-home-0f542775.js")
+    action: () => import("./ajm-home-c4a5d9db.js")
   },
   {
-    path: "/#about",
+    path: "/about",
     component: "ajm-about",
     // @ts-ignore
-    action: () => import("./ajm-about-95026e2b.js")
+    action: () => import("./ajm-about-95435169.js")
   },
   {
     path: "/work",
@@ -1286,7 +1286,7 @@ it.setRoutes([
     path: "/technologist",
     component: "ajm-technologist",
     // @ts-ignore
-    action: () => import("./ajm-technologist-4afb39a8.js")
+    action: () => import("./ajm-technologist-61d3c649.js")
   },
   {
     path: "/classicist",
@@ -1340,7 +1340,7 @@ it.setRoutes([
     path: "/resume",
     component: "ajm-resume",
     // @ts-ignore
-    action: () => import("./ajm-resume-ac19e429.js")
+    action: () => import("./ajm-resume-4d01e0e8.js")
   },
   {
     path: "(.*)",
