@@ -1340,7 +1340,7 @@ it.setRoutes([
     path: "/resume",
     component: "ajm-resume",
     // @ts-ignore
-    action: () => import("./ajm-resume-4d01e0e8.js")
+    action: () => import("./ajm-resume-e80c1d18.js")
   },
   {
     path: "(.*)",
