@@ -1,9 +1,9 @@
 import { s as h, x as f, e as p } from "./query-assigned-elements-94c95e81.js";
 import { b as o, a as m } from "./base-8581a63a.js";
-var c = Object.defineProperty, g = Object.getOwnPropertyDescriptor, u = (n, s, a, r) => {
-  for (var e = r > 1 ? void 0 : r ? g(s, a) : s, l = n.length - 1, i; l >= 0; l--)
-    (i = n[l]) && (e = (r ? i(s, a, e) : i(e)) || e);
-  return r && e && c(s, a, e), e;
+var c = Object.defineProperty, g = Object.getOwnPropertyDescriptor, u = (n, r, a, s) => {
+  for (var e = s > 1 ? void 0 : s ? g(r, a) : r, l = n.length - 1, i; l >= 0; l--)
+    (i = n[l]) && (e = (s ? i(r, a, e) : i(e)) || e);
+  return s && e && c(r, a, e), e;
 };
 let t = class extends h {
   render() {
@@ -14,7 +14,7 @@ let t = class extends h {
         </header>
         <section slot="content">
           <ul>
-            <li><a href="/lsystems">L-Systems</a></li>
+            <li><a href="/lsystem">L-Systems</a></li>
             <li><a href="/starfield">Starfield</a></li>
             <li><a href="/games">Games</a></li>
             <li><a href="/graphing">Graphing</a></li>

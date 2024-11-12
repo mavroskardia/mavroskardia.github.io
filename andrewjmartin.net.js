@@ -1280,7 +1280,7 @@ it.setRoutes([
     path: "/tinkerings",
     component: "ajm-tinkerings",
     // @ts-ignore
-    action: () => import("./ajm-tinkerings-054437c4.js")
+    action: () => import("./ajm-tinkerings-6463b88a.js")
   },
   {
     path: "/technologist",
@@ -1335,6 +1335,12 @@ it.setRoutes([
     component: "ajm-cssjsfun",
     // @ts-ignore
     action: () => import("./ajm-cssjsfun-5118c8d0.js")
+  },
+  {
+    path: "/resume",
+    component: "ajm-resume",
+    // @ts-ignore
+    action: () => import("./ajm-resume-ac19e429.js")
   },
   {
     path: "(.*)",
