@@ -226,7 +226,7 @@ r.styles = l`
       float: left;
       background-color: rgba(25,125,200,0.125);
       height: 100vh;
-      max-width: 20vw;
+      width: 55vw;
       padding: 1rem;
     }
 
@@ -302,6 +302,13 @@ r.styles = l`
       aside {
         float: none;
         max-width: 100vw;
+      }
+    }
+
+    @media print {
+      aside {
+        max-width: 100vw;
+        width: 55rem;
       }
     }
 
