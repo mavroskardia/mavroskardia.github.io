@@ -1265,7 +1265,7 @@ it.setRoutes([
     action: () => import("./ajm-home-0f542775.js")
   },
   {
-    path: "/about",
+    path: "/#about",
     component: "ajm-about",
     // @ts-ignore
     action: () => import("./ajm-about-95026e2b.js")
